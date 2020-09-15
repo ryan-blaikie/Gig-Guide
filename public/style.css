@@ -1,0 +1,26 @@
+body{
+    background: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 15px;
+}
+h1, h2, p {text-align: center;}
+h2{font-size: medium;}
+input {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 25px;
+}
+table, th, td{
+    border: 1px solid black;
+}
+table{border-collapse: collapse;}
+
+.centred{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#evfinda{
+    cursor: pointer;
+}

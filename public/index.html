@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    h1, h2, p {text-align: center;}
-</style>
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="client.js" defer="true"></script> 
 <body>
     <h1>Find a Gig</h1>
     <h2>By Ryan Blaikie</h2>
-    <p>Body</p>
+    <div>
+        <input placeholder="Search for a Gig">
+    </div>
+    <br><br>
+    <p id="main">Body</p>
+    <table id="gigs" width="100%">
+        <thead><tr><th>Name</th><th>Location</th><th>Dates</th></tr></thead>
+
+    </table>
+    <div>
+        <img id="evfinda" class="centred" src = "https://www.eventfinda.co.nz/images/global/attribution.gif?qgocdu">
+    </div>
+
 </body>
 </html>
