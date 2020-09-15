@@ -15,10 +15,23 @@
     <div>
         <h2>Upcoming Gigs</h2>
     </div>
+    <div id="filters">
+        <form>
+            <select id="city" class="centred">
+              <option value="">(All Cities)</option>
+              <option value="Auckland">Auckland</option>
+              <option value="Tauranga">Tauranga</option>
+              <option value="Wellington">Wellington</option>
+              <option value="Christchurch">Christchurch</option>
+              <option value="Dunedin">Dunedin</option>
+            </select>
+          </form>
+    </div>
+    <button id="filterbtn"class="centred">Apply Filters</button>
+    <br>
     <table id="gigs" width="100%">
-        <thead><tr><th>Name</th><th>Genre</th><th>Location</th><th>Dates</th></tr></thead>
-
     </table>
+    <p id="no-results" style="display: none;">We're sorry, it looks like there are no matching gigs!</p>
     <br>
     <div>
         <img id="evfinda" class="centred" src = "https://www.eventfinda.co.nz/images/global/attribution.gif?qgocdu">

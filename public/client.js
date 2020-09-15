@@ -1,17 +1,21 @@
 $(document).ready(function(){
-
-    const createTable = (data) =>  {
+    let data;
+    const createTable = (data, city) =>  {
+        let noResults = true; 
+        let tableRef = document.getElementById("gigs");
         for(let i=0; i<data.length; i++){
             //exclude canceled and show Auckland only
-            //  && data[i].address.includes("Auckland")
-            if (data[i].is_cancelled == false && data[i].name.includes("SOLD OUT")==false){
+            if (data[i].is_cancelled == false 
+                && data[i].name.includes("SOLD OUT")==false 
+                && data[i].address.includes(city)){
+                noResults = false;
 
                 let name = data[i].name;
                 let place = data[i].location.name;
                 let dates = data[i].datetime_summary;
                 let genre = data[i].category.name;
-
-                let tableRef = document.getElementById("gigs");
+                
+                //Insert Row
                 let newRow  = tableRef.insertRow(-1);
                 let cell1 = newRow.insertCell(0);
                 let text1 = document.createTextNode(name);
@@ -27,6 +31,22 @@ $(document).ready(function(){
                 cell4.appendChild(text4);
             }
         }
+        if (noResults == true){$("#no-results").css("display", "block");}
+        else{
+            $("#no-results").css("display", "none")
+                //Construct headers
+                let header = tableRef.createTHead();
+                $("thead").css("text-align", "center");
+                let headerR = header.insertRow(0);
+                let c1 = headerR.insertCell(0);
+                c1.innerHTML = "<b>Name<b>";
+                let c2 = headerR.insertCell(1);
+                c2.innerHTML = "<b>Genre<b>";
+                let c3 = headerR.insertCell(2);
+                c3.innerHTML = "<b>Location<b>";
+                let c4 = headerR.insertCell(3);
+                c4.innerHTML = "<b>Dates<b>";
+        }
     }
 
     async function getEventData(){
@@ -39,9 +59,9 @@ $(document).ready(function(){
         }
     
         const res = await fetch('/getData', options);
-        let data = await res.json();
+        data = await res.json();
         data = data.body;
-        createTable(data);
+        createTable(data, "");
     }
 
     getEventData();
@@ -49,6 +69,12 @@ $(document).ready(function(){
 
 $("#evfinda").click(function(){
     window.open("https://www.eventfinda.co.nz", '_blank');
+})
+
+$("#filterbtn").click(function(){
+    let city = $("#city").val();
+    $("#gigs").empty();
+    createTable(data, city);
 })
 
 });
