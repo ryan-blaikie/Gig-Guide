@@ -19,16 +19,16 @@ app.listen(3000, ()=> {
 
     })
     .then (response => response.json())
-    .then(data => {
+    .then(eventData => {
         console.log("Retrieved data from EventFinda API");
-        data = data.events;
+        data = eventData.events;
     })
     .catch(err => console.log(err));
 })
 
-//Let client JS access data from EventFinda API
-// app.get('/getData', (req, res) => {
-//     res.json({
-//         body: data
-//     })
-// })
+// Let client JS access data from EventFinda API
+app.get('/getData', (req, res) => {
+    res.json({
+        body: data
+    })
+})

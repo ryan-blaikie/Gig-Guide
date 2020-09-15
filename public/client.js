@@ -12,4 +12,4 @@ async function getEventData(){
     console.log(data);
 }
 
-// getEventData();
+getEventData();
